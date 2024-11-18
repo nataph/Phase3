@@ -14,7 +14,6 @@ public class BuyerView extends Application {
 	    private TextField totalBox;
 	    private double totalPrice = 0;
 
-	    @Override
 	    public void start(Stage primaryStage) {
 	        // Left
 	        ListView<String> categoryList = new ListView<>();
@@ -141,25 +140,20 @@ public class BuyerView extends Application {
 	        private final StringProperty title;
 	        private final StringProperty status;
 	        private final DoubleProperty price;
-
 	        public Book(String title, String status, double price) {
 	            this.title = new SimpleStringProperty(title);
 	            this.status = new SimpleStringProperty(status);
 	            this.price = new SimpleDoubleProperty(price);
 	        }
-
 	        public StringProperty titleProperty() {
 	            return title;
 	        }
-
 	        public StringProperty statusProperty() {
 	            return status;
 	        }
-
 	        public DoubleProperty priceProperty() {
 	            return price;
 	        }
-
 	        public double getPrice() {
 	            return price.get();
 	        }
