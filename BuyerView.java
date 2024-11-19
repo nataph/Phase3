@@ -15,7 +15,7 @@ public class BuyerView extends Application {
 	    private double totalPrice = 0;
 
 	    public void start(Stage primaryStage) {
-	        // Left
+	        // Left - Category List
 	        ListView<String> categoryList = new ListView<>();
 	        categoryList.setItems(FXCollections.observableArrayList(
 	                "Natural Science", "Computer", "Math", "Language", 
