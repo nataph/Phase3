@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 public class SellerView extends Application {
    
     public void start(Stage primaryStage) {
-    	// Create grid layout
+    	// Create layout - help organize the grid (columns, rows)
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(20));
         grid.setHgap(10);
@@ -28,14 +28,15 @@ public class SellerView extends Application {
         // Add UI components
         Label titleLabel = new Label("Book Title:");
         TextField titleField = new TextField();
-        grid.add(titleLabel, 0, 0);
-        grid.add(titleField, 1, 0);
+        grid.add(titleLabel, 0, 0); //0 - column index, 0 - row index
+        grid.add(titleField, 1, 0); //1 - column index, 0 - row index
 
         Label isbnLabel = new Label("ISBN:");
         TextField isbnField = new TextField();
         grid.add(isbnLabel, 0, 1);
         grid.add(isbnField, 1, 1);
 
+        // condition -  radio button (select one at a time)
         Label conditionLabel = new Label("Condition:");
         RadioButton usedLikeNew = new RadioButton("Used Like New");
         RadioButton moderatelyUsed = new RadioButton("Moderately Used");
@@ -50,6 +51,7 @@ public class SellerView extends Application {
         grid.add(conditionLabel, 0, 2);
         grid.add(conditionBox, 1, 2);
 
+        // file upload (picture)
         Label uploadLabel = new Label("Please attach a picture of the book here:");
         Button uploadButton = new Button("Upload file");
         FileChooser fileChooser = new FileChooser();
@@ -64,16 +66,19 @@ public class SellerView extends Application {
         grid.add(uploadLabel, 0, 3);
         grid.add(uploadBox, 1, 3);
 
+        // original price
         Label originalPriceLabel = new Label("Original Price:");
         TextField originalPriceField = new TextField();
         grid.add(originalPriceLabel, 0, 4);
         grid.add(originalPriceField, 1, 4);
-
+        
+        // buying price
         Label buyingPriceLabel = new Label("Buying Price:");
         TextField buyingPriceField = new TextField();
         grid.add(buyingPriceLabel, 0, 5);
         grid.add(buyingPriceField, 1, 5);
 
+        // 'list my book' button
         Button saveButton = new Button("List My Book");
         saveButton.setOnAction(e -> {//Start of Action
             String bookTitle = titleField.getText();
@@ -115,5 +120,4 @@ public class SellerView extends Application {
         launch(args);
     }
 }
-
 
