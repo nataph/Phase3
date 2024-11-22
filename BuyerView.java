@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class BuyerView extends Application {
+    //Data Members
     private TableView<BookInfo> bookTable;
     private TextField totalBox; 
     private TextField searchBar;
@@ -22,12 +23,14 @@ public class BuyerView extends Application {
     	primaryStage.setTitle("Bookstore 52");
     	Text title = new Text("Bookstore 52");
     	title.setStyle("-fx-font-weight: bold;");
+        
         // Left: Category List
         ListView<String> categoryList = new ListView<>();
         categoryList.setItems(FXCollections.observableArrayList(
                 "Natural Science", "Computer", "Math", "Language",
                 "Novel", "Classic", "History", "Fantasy", "Fiction"));
         categoryList.setPrefWidth(200);
+        
         // listen (or check) for changes in the selected item in category list
         categoryList.getSelectionModel().selectedItemProperty().
         addListener((observable, oldValue, newValue) -> {
@@ -163,10 +166,13 @@ public class BuyerView extends Application {
 
     // Book class
     public static class BookInfo {
+        //Data Members
         private final StringProperty title;
         private final StringProperty status;
         private final DoubleProperty price;
         private final String category; 
+
+        //Constructor
         public BookInfo(String title, String status, double price, String category) {
             this.title = new SimpleStringProperty(title);
             this.status = new SimpleStringProperty(status);
@@ -174,6 +180,7 @@ public class BuyerView extends Application {
             this.category = category;
         }
 
+        //Get Methods
         public String getTitle() {
             return title.get();
         }
