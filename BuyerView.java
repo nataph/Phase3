@@ -19,7 +19,7 @@ public class BuyerView extends Application {
 	        ListView<String> categoryList = new ListView<>();
 	        categoryList.setItems(FXCollections.observableArrayList(
 	                "Natural Science", "Computer", "Math", "Language", 
-	                "Novels", "Classic", "History", "Fantasy", "Fiction"
+	                "Novel", "Classic", "History", "Fantasy", "Fiction"
 	        ));
 	        categoryList.setPrefWidth(200);
 
