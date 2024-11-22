@@ -37,9 +37,15 @@ public class SellerView extends Application {
         grid.add(isbnField, 1, 1);
 
         Label conditionLabel = new Label("Condition:");
-        CheckBox usedLikeNew = new CheckBox("Used Like New");
-        CheckBox moderatelyUsed = new CheckBox("Moderately Used");
-        CheckBox heavilyUsed = new CheckBox("Heavily Used");
+        RadioButton usedLikeNew = new RadioButton("Used Like New");
+        RadioButton moderatelyUsed = new RadioButton("Moderately Used");
+        RadioButton heavilyUsed = new RadioButton("Heavily Used");
+
+        ToggleGroup conditionGroup = new ToggleGroup();
+        usedLikeNew.setToggleGroup(conditionGroup);
+        moderatelyUsed.setToggleGroup(conditionGroup);
+        heavilyUsed.setToggleGroup(conditionGroup);
+
         HBox conditionBox = new HBox(10, usedLikeNew, moderatelyUsed, heavilyUsed);
         grid.add(conditionLabel, 0, 2);
         grid.add(conditionBox, 1, 2);
