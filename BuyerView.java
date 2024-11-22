@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class BuyerView extends Application {
@@ -19,15 +20,21 @@ public class BuyerView extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+    	primaryStage.setTitle("Bookstore 52");
+    	Text title = new Text("Bookstore 52");
+    	title.setStyle("-fx-font-weight: bold;");
         // Left: Category List
         ListView<String> categoryList = new ListView<>();
         categoryList.setItems(FXCollections.observableArrayList(
                 "Natural Science", "Computer", "Math", "Language",
                 "Novel", "Classic", "History", "Fantasy", "Fiction"));
         categoryList.setPrefWidth(200);
-
-        categoryList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) updateBookTable(newValue);
+        // listen (or check) for changes in the selected item in category list
+        categoryList.getSelectionModel().selectedItemProperty().
+        addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+            	updateBookTable(newValue);
+            }
         });
 
         // Search Bar
@@ -52,9 +59,10 @@ public class BuyerView extends Application {
         statusColumn.setPrefWidth(150);
 
         TableColumn<Book, Double> priceColumn = new TableColumn<>("Price");
-        priceColumn.setCellValueFactory(data -> data.getValue().priceProperty().asObject());
+        priceColumn.setCellValueFactory(data -> data.getValue().priceProperty().asObject()); // makes DoubleProperty usable in TableView
         priceColumn.setPrefWidth(150);
-
+        
+        // define columns ( display the title, status, price)
         bookTable.getColumns().addAll(titleColumn, statusColumn, priceColumn);
 
         // Total price 
@@ -89,7 +97,6 @@ public class BuyerView extends Application {
 
         // Scene
         Scene scene = new Scene(root, 800, 600);
-        primaryStage.setTitle("Bookstore 52");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
