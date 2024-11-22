@@ -75,7 +75,7 @@ public class SellerView extends Application {
         grid.add(buyingPriceField, 1, 5);
 
         Button saveButton = new Button("List My Book");
-        saveButton.setOnAction(e -> {
+        saveButton.setOnAction(e -> {//Start of Action
             String bookTitle = titleField.getText();
             String isbn = isbnField.getText();
             String condition = (usedLikeNew.isSelected() ? "Used Like New" : "") +
@@ -85,24 +85,23 @@ public class SellerView extends Application {
             String originalPrice = originalPriceField.getText();
             String buyingPrice = buyingPriceField.getText();
 
-            // Save data to a file
-            try (FileWriter writer = new FileWriter("book_info.txt", true)) {
-                writer.write("Book Title: " + bookTitle + "\n");
-                writer.write("ISBN: " + isbn + "\n");
-                writer.write("Condition: " + condition + "\n");
-                writer.write("Image Path: " + filePath + "\n");
-                writer.write("Original Price: " + originalPrice + "\n");
-                writer.write("Buying Price: " + buyingPrice + "\n");
-                writer.write("------------------------------\n");
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Success");
+            //Check fields
+            if(bookTitle.isEmpty() || isbn.isEmpty() || condition.isEmpty() || 
+                filePath.isEmpty() || originalPrice.isEmpty() || buyingPrice.isEmpty() ) {
+            	Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
                 alert.setHeaderText(null);
-                alert.setContentText("Book information saved successfully!");
+                alert.setContentText("Fields must be filled");
                 alert.showAndWait();
-            } catch (IOException ex) {
-                ex.printStackTrace();
             }
-        });
+            else {//Set book for sale
+               Book bookForSale = new Book(bookTitle, isbn, condition, filePath, originalPrice, buyingPrice);
+            	titleField.clear();
+            	isbnField.clear();
+            	originalPriceField.clear();
+            	buyingPriceField.clear();
+            }
+        });//End of Action
         grid.add(saveButton, 1, 6);
 
         // Set the scene
