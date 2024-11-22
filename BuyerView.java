@@ -11,14 +11,13 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class BuyerView extends Application {
-    private TableView<Book> bookTable;
+    private TableView<BookInfo> bookTable;
     private TextField totalBox; 
     private TextField searchBar;
     private double totalPrice = 0;
-    private ObservableList<Book> books = FXCollections.observableArrayList();
-    private ObservableList<Book> allBooks = FXCollections.observableArrayList(); // The list
+    private ObservableList<BookInfo> books = FXCollections.observableArrayList();
+    private ObservableList<BookInfo> allBooks = FXCollections.observableArrayList(); // The list
 
-    @Override
     public void start(Stage primaryStage) {
     	primaryStage.setTitle("Bookstore 52");
     	Text title = new Text("Bookstore 52");
@@ -50,15 +49,15 @@ public class BuyerView extends Application {
         bookTable = new TableView<>();
         bookTable.setPrefWidth(600);
 
-        TableColumn<Book, String> titleColumn = new TableColumn<>("Book's Information");
+        TableColumn<BookInfo, String> titleColumn = new TableColumn<>("Book's Information");
         titleColumn.setCellValueFactory(data -> data.getValue().titleProperty());
         titleColumn.setPrefWidth(300);
 
-        TableColumn<Book, String> statusColumn = new TableColumn<>("Status");
+        TableColumn<BookInfo, String> statusColumn = new TableColumn<>("Status");
         statusColumn.setCellValueFactory(data -> data.getValue().statusProperty());
         statusColumn.setPrefWidth(150);
 
-        TableColumn<Book, Double> priceColumn = new TableColumn<>("Price");
+        TableColumn<BookInfo, Double> priceColumn = new TableColumn<>("Price");
         priceColumn.setCellValueFactory(data -> data.getValue().priceProperty().asObject()); // makes DoubleProperty usable in TableView
         priceColumn.setPrefWidth(150);
         
@@ -104,9 +103,9 @@ public class BuyerView extends Application {
     // Filter books based on search book
     private void filterBooks() {
         String searchText = searchBar.getText().toLowerCase();
-        ObservableList<Book> filteredBooks = FXCollections.observableArrayList();
+        ObservableList<BookInfo> filteredBooks = FXCollections.observableArrayList();
         // Search book in the list
-        for (Book book : allBooks) { 
+        for (BookInfo book : allBooks) { 
             if (book.getTitle().toLowerCase().contains(searchText) ||
                 book.getStatus().toLowerCase().contains(searchText)) {
                 filteredBooks.add(book);
@@ -118,7 +117,7 @@ public class BuyerView extends Application {
     // Update book table 
     private void updateBookTable(String category) {
         books.clear();
-        for (Book book : allBooks) { 
+        for (BookInfo book : allBooks) { 
             if (getCategory(book).equals(category)) {
                 books.add(book);
             }
@@ -128,28 +127,28 @@ public class BuyerView extends Application {
 
     // The list of all books
     private void initializeAllBooks() {
-        allBooks.addAll(new Book("A Brief History of Time", "Used Like New", 15.99, "Natural Science"),
-                		new Book("The Selfish Gene", "Moderately Used", 10.99, "Natural Science"),
-                		new Book("Clean Code", "Used Like New", 25.99, "Computer"),
-                		new Book("The Pragmatic Programmer", "Heavily Used", 9.99, "Computer"),
-                		new Book("Introduction to Linear Algebra", "Used Like New", 5.99, "Math"),
-                		new Book("Introduction to Algebra", "Moderately Used", 7.99, "Math"),
-                		new Book("Practice Makes Perfect: Complete Spanish All-in-One", "Used Like New", 11.99, "Language"),
-                		new Book("Practice Makes Perfect: Basic French", "Moderately Used", 10.99, "Language"),
-                		new Book("Little Women", "Moderately Used", 12.59, "Novel"),
-                		new Book("The Great Gatsby", "Moderately Used", 8.99, "Novel"),
-                		new Book("Pride & Prejudice", "Used Like New", 7.59, "Classic"),
-                		new Book("The Alchemist", "Heavily Used", 12.59, "Classic"),
-                		new Book("American History", "Moderately Used", 12.99, "History"),
-                		new Book("Timeline of World History", "Used Like New", 10.59, "History"),
-                		new Book("A Game of Thrones", "Used Like New", 14.59, "Fantasy"),
-                		new Book("The Lord of the Rings", "Heavily Used", 6.99, "Fantasy"),
-                		new Book("Harry Potter and the Chamber of Secrets", "Heavily Used", 8.69, "Fiction"),
-                		new Book("The Book Thief", "Used Like New", 9.59, "Fiction"));
+        allBooks.addAll(new BookInfo("A Brief History of Time", "Used Like New", 15.99, "Natural Science"),
+                		new BookInfo("The Selfish Gene", "Moderately Used", 10.99, "Natural Science"),
+                		new BookInfo("Clean Code", "Used Like New", 25.99, "Computer"),
+                		new BookInfo("The Pragmatic Programmer", "Heavily Used", 9.99, "Computer"),
+                		new BookInfo("Introduction to Linear Algebra", "Used Like New", 5.99, "Math"),
+                		new BookInfo("Introduction to Algebra", "Moderately Used", 7.99, "Math"),
+                		new BookInfo("Practice Makes Perfect: Complete Spanish All-in-One", "Used Like New", 11.99, "Language"),
+                		new BookInfo("Practice Makes Perfect: Basic French", "Moderately Used", 10.99, "Language"),
+                		new BookInfo("Little Women", "Moderately Used", 12.59, "Novel"),
+                		new BookInfo("The Great Gatsby", "Moderately Used", 8.99, "Novel"),
+                		new BookInfo("Pride & Prejudice", "Used Like New", 7.59, "Classic"),
+                		new BookInfo("The Alchemist", "Heavily Used", 12.59, "Classic"),
+                		new BookInfo("American History", "Moderately Used", 12.99, "History"),
+                		new BookInfo("Timeline of World History", "Used Like New", 10.59, "History"),
+                		new BookInfo("A Game of Thrones", "Used Like New", 14.59, "Fantasy"),
+                		new BookInfo("The Lord of the Rings", "Heavily Used", 6.99, "Fantasy"),
+                		new BookInfo("Harry Potter and the Chamber of Secrets", "Heavily Used", 8.69, "Fiction"),
+                		new BookInfo("The Book Thief", "Used Like New", 9.59, "Fiction"));
     }
 
     // Get category 
-    private String getCategory(Book book) {
+    private String getCategory(BookInfo book) {
         return book.getCategory();
     }
 
@@ -163,12 +162,12 @@ public class BuyerView extends Application {
     }
 
     // Book class
-    public static class Book {
+    public static class BookInfo {
         private final StringProperty title;
         private final StringProperty status;
         private final DoubleProperty price;
         private final String category; 
-        public Book(String title, String status, double price, String category) {
+        public BookInfo(String title, String status, double price, String category) {
             this.title = new SimpleStringProperty(title);
             this.status = new SimpleStringProperty(status);
             this.price = new SimpleDoubleProperty(price);
