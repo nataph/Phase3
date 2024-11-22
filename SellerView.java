@@ -23,14 +23,16 @@ public class SellerView extends Application {
         grid.setVgap(10);
         grid.setStyle("-fx-background-color: #AD7979;");
 
-        // logo 
+        // logo TODO
         
         // Add UI components
+        //Textfield and Label for the Book's Title
         Label titleLabel = new Label("Book Title:");
         TextField titleField = new TextField();
         grid.add(titleLabel, 0, 0); //0 - column index, 0 - row index
         grid.add(titleField, 1, 0); //1 - column index, 0 - row index
 
+        //Textfield and Label for the Book's ISBN
         Label isbnLabel = new Label("ISBN:");
         TextField isbnField = new TextField();
         grid.add(isbnLabel, 0, 1);
@@ -66,13 +68,13 @@ public class SellerView extends Application {
         grid.add(uploadLabel, 0, 3);
         grid.add(uploadBox, 1, 3);
 
-        // original price
+        //Textfield and Label for the Original Price
         Label originalPriceLabel = new Label("Original Price:");
         TextField originalPriceField = new TextField();
         grid.add(originalPriceLabel, 0, 4);
         grid.add(originalPriceField, 1, 4);
         
-        // buying price
+        //Textfield and Label for the Buying Price
         Label buyingPriceLabel = new Label("Buying Price:");
         TextField buyingPriceField = new TextField();
         grid.add(buyingPriceLabel, 0, 5);
