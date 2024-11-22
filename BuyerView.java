@@ -103,6 +103,7 @@ public class BuyerView extends Application {
 	            case "Math":
 	                books.add(new Book("Introduction to Linear Algebra", "Used Like New", 5.99));
 	                books.add(new Book("Introduction to Algebra", "Moderately Used", 7.99));
+			break;
 	            case "Language":
 	                books.add(new Book("Practice Makes Perfect: Complete Spanish All-in-One", "Used Like New", 11.99));
 	                books.add(new Book("Practice Makes Perfect: Basic French", "Moderately Used", 10.99));
