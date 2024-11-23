@@ -29,7 +29,7 @@ public class BuyerView extends Application {
         categoryList.setItems(FXCollections.observableArrayList(
                 "Natural Science", "Computer", "Math", "Language",
                 "Novel", "Classic", "History", "Fantasy", "Fiction"));
-        categoryList.setPrefWidth(200);
+        categoryList.setPrefWidth(100);
         
         // listen (or check) for changes in the selected item in category list
         categoryList.getSelectionModel().selectedItemProperty().
