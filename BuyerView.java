@@ -50,19 +50,19 @@ public class BuyerView extends Application {
 
         // Book Table
         bookTable = new TableView<>();
-        bookTable.setPrefWidth(590);
+        bookTable.setPrefWidth(600);
 
         TableColumn<BookInfo, String> titleColumn = new TableColumn<>("Book's Information");
         titleColumn.setCellValueFactory(data -> data.getValue().titleProperty());
-        titleColumn.setPrefWidth(290);
+        titleColumn.setPrefWidth(300);
 
         TableColumn<BookInfo, String> statusColumn = new TableColumn<>("Status");
         statusColumn.setCellValueFactory(data -> data.getValue().statusProperty());
-        statusColumn.setPrefWidth(140);
+        statusColumn.setPrefWidth(150);
 
         TableColumn<BookInfo, Double> priceColumn = new TableColumn<>("Price");
         priceColumn.setCellValueFactory(data -> data.getValue().priceProperty().asObject()); // makes DoubleProperty usable in TableView
-        priceColumn.setPrefWidth(140);
+        priceColumn.setPrefWidth(150);
         
         // define columns ( display the title, status, price)
         bookTable.getColumns().addAll(titleColumn, statusColumn, priceColumn);
