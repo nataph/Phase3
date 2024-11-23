@@ -112,7 +112,7 @@ public class SellerView extends Application {
         grid.add(saveButton, 1, 6);
 
         // Set the scene
-        Scene scene = new Scene(grid, 500, 300);
+        Scene scene = new Scene(grid, 600, 400);
         primaryStage.setTitle("Bookstore 52");
         primaryStage.setScene(scene);
         primaryStage.show();
