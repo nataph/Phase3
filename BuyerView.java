@@ -45,7 +45,7 @@ public class BuyerView extends Application {
         searchBar.setPrefWidth(50);
         Button searchButton = new Button("Search");
         searchButton.setOnAction(e -> filterBooks());
-        VBox searchContainer = new VBox(9, searchBar, searchButton);
+        VBox searchContainer = new VBox(10, searchBar, searchButton);
         searchContainer.setStyle("-fx-padding: 10px; -fx-alignment: center;");
 
         // Book Table
