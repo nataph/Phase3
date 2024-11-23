@@ -25,11 +25,15 @@ public class Book {//Start of Class
 		this.buyingPrice = buyingPrice;
 		
 		//Create TransactionID
+		//Each book listing will have a unique transactionID
 		Transaction newTransaction = new Transaction();
-        int fileName = newTransaction.getTransactionID();
+        	int fileName = newTransaction.getTransactionID();
+		//BookList works as a folder that holds text files.  
+		//Each text file represents a book that was submitted by the seller
+		//Directory is "src/BookList/"
 		File bookFile = new File("src/BookList/" + fileName);
         
-        // Save data to a file
+        // Save data into a text file
         try (FileWriter writer = new FileWriter(bookFile, true)) {
             writer.write("Book Title: " + bookTitle + "\n");
             writer.write("ISBN: " + isbn + "\n");
@@ -39,7 +43,8 @@ public class Book {//Start of Class
             writer.write("Buying Price: " + buyingPrice + "\n");
             writer.write("------------------------------\n");
             writer.close();
-            
+
+	    //Alert for Successful creation of the text file
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Success");
             alert.setHeaderText(null);
