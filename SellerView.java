@@ -2,9 +2,11 @@ package application;
 import java.io.File;
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.image.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -21,17 +23,31 @@ public class SellerView extends Application {
         grid.setStyle("-fx-background-color: #AD7979;");
        
         // Add UI components
+       
+        // Create the logo
+        ImageView logo = new ImageView(new Image("file:src/resources/logo.png"));
+        logo.setFitWidth(40); 
+        logo.setFitHeight(40);
+        logo.setPreserveRatio(true);
+        // Create the title
+        Label title = new Label("Bookstore 52");
+        title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
+        HBox titleContainer = new HBox(10, logo, title); // Add spacing between logo and title
+        titleContainer.setAlignment(Pos.CENTER_LEFT);
+        // Add the titleContainer to the grid
+        grid.add(titleContainer, 0, 0, 2, 1); 
+       
         //Textfield and Label for the Book's Title
         Label titleLabel = new Label("Book Title:");
         TextField titleField = new TextField();
-        grid.add(titleLabel, 0, 0); //0 - column index, 0 - row index
-        grid.add(titleField, 1, 0); //1 - column index, 0 - row index
+        grid.add(titleLabel, 0, 1); //0 - column index, 1 - row index
+        grid.add(titleField, 1, 1); //1 - column index, 1 - row index
 
         //Textfield and Label for the Book's ISBN
         Label isbnLabel = new Label("ISBN:");
         TextField isbnField = new TextField();
-        grid.add(isbnLabel, 0, 1);
-        grid.add(isbnField, 1, 1);
+        grid.add(isbnLabel, 0, 2);
+        grid.add(isbnField, 1, 2);
 
         // condition -  radio button (select one at a time)
         Label conditionLabel = new Label("Condition:");
@@ -45,8 +61,8 @@ public class SellerView extends Application {
         heavilyUsed.setToggleGroup(conditionGroup);
 
         HBox conditionBox = new HBox(10, usedLikeNew, moderatelyUsed, heavilyUsed);
-        grid.add(conditionLabel, 0, 2);
-        grid.add(conditionBox, 1, 2);
+        grid.add(conditionLabel, 0, 3);
+        grid.add(conditionBox, 1, 3);
 
         // file upload (picture)
         Label uploadLabel = new Label("Please attach a picture of the book here:");
@@ -60,20 +76,20 @@ public class SellerView extends Application {
             }
         });
         HBox uploadBox = new HBox(10, uploadButton, filePathLabel);
-        grid.add(uploadLabel, 0, 3);
-        grid.add(uploadBox, 1, 3);
+        grid.add(uploadLabel, 0, 4);
+        grid.add(uploadBox, 1, 4);
 
         //Textfield and Label for the Original Price
         Label originalPriceLabel = new Label("Original Price:");
         TextField originalPriceField = new TextField();
-        grid.add(originalPriceLabel, 0, 4);
-        grid.add(originalPriceField, 1, 4);
+        grid.add(originalPriceLabel, 0, 5);
+        grid.add(originalPriceField, 1, 5);
         
         //Textfield and Label for the Buying Price
         Label buyingPriceLabel = new Label("Buying Price:");
         TextField buyingPriceField = new TextField();
-        grid.add(buyingPriceLabel, 0, 5);
-        grid.add(buyingPriceField, 1, 5);
+        grid.add(buyingPriceLabel, 0, 6);
+        grid.add(buyingPriceField, 1, 6);
 
         // 'list my book' button
         Button saveButton = new Button("List My Book");
@@ -104,7 +120,7 @@ public class SellerView extends Application {
             	buyingPriceField.clear();
             }
         });//End of Action
-        grid.add(saveButton, 1, 6);
+        grid.add(saveButton, 1, 7);
 
         // Set the scene
         Scene scene = new Scene(grid, 600, 400);
