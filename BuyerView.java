@@ -149,7 +149,7 @@ public class BuyerView extends Application {
                 		new BookInfo("Harry Potter and the Chamber of Secrets", "Heavily Used", 8.69, "Fiction"),
                 		new BookInfo("The Book Thief", "Used Like New", 9.59, "Fiction"),
                         new BookInfo("Sapiens: A Brief History of Humankind", "Moderately Used", 12.99, "History"),
-                        new BookInfo("Thinking, Fast and Slow", "Used Like New", 14.49, "Psychology"));
+                        new BookInfo("Thinking, Fast and Slow", "Used Like New", 14.49, "Natural Science"));
     }
 
     // Get category 
