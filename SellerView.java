@@ -1,8 +1,5 @@
 package application;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
