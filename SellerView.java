@@ -22,26 +22,7 @@ public class SellerView extends Application {
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setStyle("-fx-background-color: #AD7979;");
-
-        // logo TODO
-       // Create the logo
-ImageView logo = new ImageView(new Image("file:src/resources/logo.png"));
-logo.setFitWidth(40); 
-logo.setFitHeight(40);
-logo.setPreserveRatio(true);
-
-// Create the title
-Label title = new Label("Bookstore 52");
-title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
-
-
-HBox titleContainer = new HBox(10, logo, title); // Add spacing between logo and title
-titleContainer.setAlignment(Pos.CENTER_LEFT);
-
-// Add the titleContainer to the grid
-grid.add(titleContainer, 0, 0, 2, 1); 
-
-        
+       
         // Add UI components
         //Textfield and Label for the Book's Title
         Label titleLabel = new Label("Book Title:");
